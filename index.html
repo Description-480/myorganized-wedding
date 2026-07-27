@@ -4,6 +4,25 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/png" href="/favicon.png" />
+    <!--
+      SPA fallback restore (pairs with public/404.html). When a deep link was
+      redirected via /?/<path>, rewrite the address bar back to the real path
+      before the app boots so React Router sees the intended route.
+    -->
+    <script>
+      (function (l) {
+        if (l.search[1] === "/") {
+          var decoded = l.search
+            .slice(1)
+            .split("&")
+            .map(function (s) {
+              return s.replace(/~and~/g, "&");
+            })
+            .join("?");
+          window.history.replaceState(null, null, l.pathname.slice(0, -1) + decoded + l.hash);
+        }
+      })(window.location);
+    </script>
     <title>My Organized Wedding — Plan your wedding, together</title>
     <meta name="description" content="Plan your wedding together in one place: invite your helpers, share tasks with deadlines, build a beautiful wedding website, and collect RSVPs — all the way to the big day." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -12,8 +31,8 @@
       href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500;600&display=swap"
       rel="stylesheet"
     />
-    <script type="module" crossorigin src="/assets/index-DFzmjaRi.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-CJry59Db.css">
+    <script type="module" crossorigin src="/assets/index-DfsHslPJ.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-DDfBfHMs.css">
   </head>
   <body>
     <div id="root"></div>

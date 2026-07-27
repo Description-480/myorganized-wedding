@@ -1,21 +1,34 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/png" href="/favicon.png" />
-    <title>My Organized Wedding — Plan your wedding, together</title>
-    <meta name="description" content="Plan your wedding together in one place: invite your helpers, share tasks with deadlines, build a beautiful wedding website, and collect RSVPs — all the way to the big day." />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500;600&display=swap"
-      rel="stylesheet"
-    />
-    <script type="module" crossorigin src="/assets/index-DFzmjaRi.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-CJry59Db.css">
+    <title>My Organized Wedding</title>
+    <!--
+      SPA fallback for GitHub Pages (rafgraph/spa-github-pages technique).
+      GitHub serves this file for any unknown path. Instead of showing a 404,
+      we encode the requested path into a query string and redirect to the app
+      root (index.html), which returns HTTP 200. index.html's inline script then
+      restores the real URL so client-side routing takes over seamlessly.
+      pathSegmentsToKeep = 0 because the site is served from a custom apex domain.
+    -->
+    <script>
+      (function () {
+        var pathSegmentsToKeep = 0;
+        var l = window.location;
+        l.replace(
+          l.protocol +
+            "//" +
+            l.hostname +
+            (l.port ? ":" + l.port : "") +
+            l.pathname.split("/").slice(0, 1 + pathSegmentsToKeep).join("/") +
+            "/?/" +
+            l.pathname.slice(1).split("/").slice(pathSegmentsToKeep).join("/").replace(/&/g, "~and~") +
+            (l.search ? "&" + l.search.slice(1).replace(/&/g, "~and~") : "") +
+            l.hash
+        );
+      })();
+    </script>
   </head>
-  <body>
-    <div id="root"></div>
-  </body>
+  <body></body>
 </html>
