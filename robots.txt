@@ -1,0 +1,12 @@
+User-agent: *
+
+# Private or personal areas — nothing here belongs in a search index.
+# Everything else (/, /pricing, /examples/*, /privacy, /terms) is crawlable.
+Disallow: /login
+Disallow: /onboarding
+Disallow: /w/
+Disallow: /invite/
+Disallow: /site/
+Disallow: /preview
+
+Sitemap: https://myorganized.wedding/sitemap.xml
