@@ -6,6 +6,7 @@ Disallow: /login
 Disallow: /onboarding
 Disallow: /w/
 Disallow: /invite/
+Disallow: /unsubscribe/
 Disallow: /site/
 Disallow: /preview
 
