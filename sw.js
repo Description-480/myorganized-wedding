@@ -15,7 +15,7 @@
  *
  * Bump CACHE_VERSION on any change to this file.
  */
-const CACHE_VERSION = "v1";
+const CACHE_VERSION = "v2";
 const SHELL_CACHE = `mow-shell-${CACHE_VERSION}`;
 const ASSET_CACHE = `mow-assets-${CACHE_VERSION}`;
 
@@ -52,7 +52,13 @@ self.addEventListener("fetch", (event) => {
 
   if (request.mode === "navigate") {
     event.respondWith(
-      fetch(request)
+      // `cache: "reload"` matters more than it looks. A plain fetch() still
+      // consults the browser's HTTP cache, and GitHub Pages serves index.html
+      // with a max-age, so "network first" would happily hand back HTML from
+      // ten minutes ago — pointing at the PREVIOUS build's hashed bundle, which
+      // this service worker has helpfully cached and will serve. The result is
+      // users pinned to old code well after a deploy. Ask for the shell fresh.
+      fetch(request.url, { cache: "reload", credentials: "same-origin" })
         .then((response) => {
           // Keep the shell fresh so the offline fallback isn't ancient.
           const copy = response.clone();
